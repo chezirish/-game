@@ -1,2 +1,2 @@
 # -game
-2D game
+C++ 2D game
