@@ -1,10 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include<iostream>
-#include <dos.h>
-
-
-#include <Windows.h>
-#include <stdlib.h>
 
 
 using namespace sf;
