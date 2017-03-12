@@ -102,7 +102,7 @@ public:
 			}
 		}
 
-		if (rect.top != 500 && dx < 0){
+		if (rect.top != 500 && dx < 0 || rect.top != 500 && eyeLeft){
 			currentFrameJump += 0.003*time;
 
 			if (currentFrameJump >= 7) { currentFrameJump -= 7; }
