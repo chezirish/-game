@@ -179,6 +179,44 @@ public:
 
 
 
+void menu(RenderWindow & window) {
+	Texture menuTexture1, menuTexture2, menuTexture3, aboutTexture, menuBackground;
+	menuTexture1.loadFromFile("image/game.png");
+	menuTexture3.loadFromFile("image/game.png");
+	menuBackground.loadFromFile("image/k.png");
+	Sprite menu1(menuTexture1), menu3(menuTexture3), menuBg(menuBackground);
+	bool isMenu = 1;
+	int menuNum = 0;
+	menu1.setPosition(100, 30);
+	menu3.setPosition(100, 150);
+	menuBg.setPosition(345, 0);
+
+
+	//////////////////////////////лемч///////////////////
+	while (isMenu)
+	{
+		menu1.setColor(Color::White);
+		menu3.setColor(Color::White);
+		menuNum = 0;
+		window.clear(Color(129, 181, 221));
+
+		if (IntRect(100, 30, 300, 50).contains(Mouse::getPosition(window))) { menu1.setColor(Color::Blue); menuNum = 1; }
+		if (IntRect(100, 150, 300, 50).contains(Mouse::getPosition(window))) { menu3.setColor(Color::Blue); menuNum = 3; }
+
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (menuNum == 1) isMenu = false;
+			if (menuNum == 3) { window.close(); isMenu = false; }
+		}
+		window.draw(menuBg);
+		window.draw(menu1);
+		window.draw(menu3);
+
+		window.display();
+	}
+	////////////////////////////////////////////////////
+}
+
 
 
 int main()
@@ -187,11 +225,10 @@ int main()
 	RenderWindow window(VideoMode(1000, 600), "jesus!");
 
 
-	/*CircleShape Mycircle(100.f);
-	Mycircle.setFillColor(Color::Green);*/
 
 	Texture t;
-	t.loadFromFile("sonic.png");
+	t.loadFromFile("image/sonic.png");
+
 
 
 	float currentFrame = 0;
@@ -203,7 +240,7 @@ int main()
 
 
 	Texture mapTexture;
-	mapTexture.loadFromFile("map.png");
+	mapTexture.loadFromFile("image/map.png");
 
 	Sprite tile;
 	tile.setTexture(mapTexture);
@@ -216,6 +253,8 @@ int main()
 
 	RectangleShape rectangle(Vector2f(32, 32));
 
+
+	menu(window);
 	while (window.isOpen()){
 		
 		float time = clock.getElapsedTime().asMicroseconds();
@@ -273,3 +312,4 @@ int main()
 
 	return 0;
 } 
+
