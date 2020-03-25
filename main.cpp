@@ -48,7 +48,7 @@ class player {
 public:
 	float dx, dy;
 	FloatRect rect;
-	bool onGround;
+	bool onGround = true;
 	Sprite sprite;
 	float currentFrame;
 	float currentFrameJump;
